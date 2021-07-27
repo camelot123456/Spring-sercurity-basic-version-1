@@ -27,8 +27,8 @@ public class UserInfoDAO extends JdbcDaoSupport implements IUserInfoDAO{
 	@Override
 	public UserInfo findUserInfo(String username) {
 		// TODO Auto-generated method stub
-		String sql = "SELECT * FORM [USER]"
-				+ " WHERE USERNAME = ?";
+		String sql = "Select u.Username,u.Password"
+				+" from Users u where u.Username = ?";
 		Object[] params = new Object[] {username};
 		UserInfoMapper mapper = new UserInfoMapper();
 		try {
@@ -43,8 +43,8 @@ public class UserInfoDAO extends JdbcDaoSupport implements IUserInfoDAO{
 	@Override
 	public List<String> getUserRoles(String username) {
 		// TODO Auto-generated method stub
-		String sql = "SELECT * FROM [USER] U, [ROLE] R "
-				+ "WHERE U.USERNAME = ? AND U.ROLE_ID = R.ID";
+		String sql = "Select r.User_Role "
+				+ "from User_Roles r where r.Username = ?";
 		Object[] params = new Object[] {username};
 		List<String> roles = this.getJdbcTemplate().queryForList(sql, params, String.class);
 		return roles;

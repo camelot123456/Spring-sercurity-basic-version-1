@@ -14,10 +14,7 @@ public class UserInfoMapper implements RowMapper<UserInfo>{
 		// TODO Auto-generated method stub
 		String username = rs.getString("USERNAME");
 		String password = rs.getString("PASSWORD");
-		String fullname = rs.getString("FULLNAME");
-		String avatar = rs.getString("AVATAR");
-		String roleId = rs.getString("ROLE_ID");
-		return new UserInfo(username, password, fullname, roleId, avatar);
+		return new UserInfo(username, password);
 	}
 	
 	

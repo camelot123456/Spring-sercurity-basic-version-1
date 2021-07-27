@@ -14,8 +14,10 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.springsecurity.dao.IUserInfoDAO;
+
 @Configuration
-@ComponentScan("com.springsecurity.**")
+@ComponentScan("com.springsecurity.*")
 @EnableTransactionManagement
 // Load to Environment
 @PropertySource("classpath:datasource-cfg.properties")
@@ -24,6 +26,9 @@ public class ApplicationContextConfig {
 	// Lưu trữ các giá thuộc tính load bởi @PropertySource.
 	@Autowired
 	private Environment env;
+
+	@Autowired
+	private IUserInfoDAO userInfoDAO;
 
 	@Bean
 	public ResourceBundleMessageSource messageSource() {

@@ -12,14 +12,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.springsecurity.dao.impl.UserInfoDAO;
+import com.springsecurity.dao.IUserInfoDAO;
 import com.springsecurity.models.UserInfo;
 
 @Service
 public class MyDBAuthenticationService implements UserDetailsService{
 
 	@Autowired
-	private UserInfoDAO userInfoDAO;
+	private IUserInfoDAO userInfoDAO;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

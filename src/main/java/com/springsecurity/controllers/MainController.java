@@ -1,6 +1,5 @@
 package com.springsecurity.controllers;
 
-import java.lang.reflect.Method;
 import java.security.Principal;
 
 import org.springframework.stereotype.Controller;
