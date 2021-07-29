@@ -22,7 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// Các User trong bộ nhớ (MEMORY).
 
 		auth.inMemoryAuthentication().withUser("user1").password("12345").roles("USER");
-		auth.inMemoryAuthentication().withUser("admin1").password("12345").roles("USER, ADMIN");
+		auth.inMemoryAuthentication().withUser("admin1").password("12345").roles("ADMIN", "USER");
 
 		// Các User trong Database
 		auth.userDetailsService(myDBAauthenticationService);
@@ -39,11 +39,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// Trang /userInfo yêu cầu phải login với vai trò USER hoặc ADMIN.
 		// Nếu chưa login, nó sẽ redirect tới trang /login.
-		http.authorizeRequests().antMatchers("/userInfo").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+		http.authorizeRequests().antMatchers("/userInfo").hasRole("USER");
 
 		// For ADMIN only.
 		// Trang chỉ dành cho ADMIN
-		http.authorizeRequests().antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
+		http.authorizeRequests().antMatchers("/admin").hasRole("ADMIN");
 
 		// Khi người dùng đã login, với vai trò XX.
 		// Nhưng truy cập vào trang yêu cầu vai trò YY,

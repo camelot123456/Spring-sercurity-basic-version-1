@@ -18,7 +18,11 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String adminPage(Model model) {
+	public String adminPage(Model model, Principal principal) {
+		// Sau khi user login thanh cong se co principal
+		String userName = principal.getName();
+
+		System.out.println("User Name: " + userName);
 		return "adminPage";
 	}
 

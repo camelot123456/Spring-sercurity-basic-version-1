@@ -38,7 +38,7 @@ public class MyDBAuthenticationService implements UserDetailsService{
         if (roles != null) {
 			for (String role : roles) {
 				// ROLE_USER, ROLE_ADMIN,..
-				GrantedAuthority authority = new SimpleGrantedAuthority("ROLE" + role);
+				GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + role);
 				grantList.add(authority);
 			}
 		}

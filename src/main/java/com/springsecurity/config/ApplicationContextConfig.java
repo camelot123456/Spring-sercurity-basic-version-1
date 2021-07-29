@@ -27,8 +27,6 @@ public class ApplicationContextConfig {
 	@Autowired
 	private Environment env;
 
-	@Autowired
-	private IUserInfoDAO userInfoDAO;
 
 	@Bean
 	public ResourceBundleMessageSource messageSource() {
